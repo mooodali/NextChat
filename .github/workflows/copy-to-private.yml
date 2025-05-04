@@ -1,0 +1,28 @@
+name: Copy to Private Repo
+
+on:
+  push:
+    branches:
+      - main  # هر وقت به شاخه اصلی کامیت بشه این اکشن اجرا می‌شه
+
+jobs:
+  copy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Git
+        run: |
+          git config --global user.name "Your Name"
+          git config --global user.email "your-email@example.com"
+
+      - name: Push to Private Repo
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        run: |
+          # Set remote for the private repo
+          git remote add private https://github.com/your-username/NextChat-Private.git
+
+          # Push the code to private repository
+          git push private main

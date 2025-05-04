@@ -154,7 +154,9 @@ export function SideBarContainer(props: {
         [styles["narrow-sidebar"]]: shouldNarrow,
       })}
       style={{
-        // #3016 disable transition on ios mobile screen
+        // Move the sidebar to the right
+        right: 0,
+        left: 'auto',
         transition: isMobileScreen && isIOSMobile ? "none" : undefined,
       }}
     >

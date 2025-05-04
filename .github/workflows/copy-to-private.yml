@@ -22,7 +22,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |
           # Set remote for the private repo with token in URL
-          git remote add private https://github.com/your-username/NextChat-Private.git
+          git remote add private https://github.com/mooodali/NextChat-Private.git
 
 
           # Push the code to private repository

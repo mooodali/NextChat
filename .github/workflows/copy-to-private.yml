@@ -3,7 +3,7 @@ name: Copy to Private Repo
 on:
   push:
     branches:
-      - main  # هر وقت به شاخه اصلی کامیت بشه این اکشن اجرا می‌شه
+      - main
 
 jobs:
   copy:
@@ -21,8 +21,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |
-          # Set remote for the private repo
-          git remote add private https://github.com/mooodali/NextChat-Private.git
+          # Set remote for the private repo with token in URL
+          git remote add private https://$GITHUB_ACTOR:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/mooodali/NextChat-Private.git
 
           # Push the code to private repository
           git push private main
